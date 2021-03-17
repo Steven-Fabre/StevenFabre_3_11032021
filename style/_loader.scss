@@ -1,0 +1,57 @@
+/*LOADER */
+
+.loader{
+    position: fixed;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: $primary-background;
+    cursor: none;
+
+    &__logo{
+        display: block;
+        font-size: 50px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 15px;
+        margin: 40vh auto;
+        color: $fifth-background;
+        border-radius: 5px;
+        box-shadow:  1px 1px 7px rgba(0,0,0,0.3), inset 1px 1px 7px rgba(255, 255, 255, 0.1) ;
+        
+        
+        @keyframes rotate {
+            0%{
+                transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+            }
+            
+            100%{
+                transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+            }
+        }
+
+        animation: rotate 2s ease-in-out infinite;
+        -webkit-animation: rotate 2s ease-in-out infinite;
+        -o-animation: rotate 2s ease-in-out infinite;
+        -ms-animation: rotate 2s ease-in-out infinite;
+        
+    }
+    @keyframes hideMe {
+
+        to{
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+     }
+ 
+     animation: hideMe 0s ease-in 3s forwards ;
+}

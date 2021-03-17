@@ -1,0 +1,54 @@
+/*HEADER*/
+
+header {
+    background: $header-background;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    position: relative;
+    z-index: 10;
+    @include shadow;
+    img{
+        height: 23px;
+        margin: auto;
+    }
+}
+
+.title{
+    font-size: 25px;
+}
+
+/*FOOTER*/
+
+footer{
+    height: 200px;
+    background: #353535;
+
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    *{
+        color: white;
+    }
+
+    a{
+        padding-bottom: 14px;
+        color: white;
+    }
+}
+
+.icon_footer{
+    font-size: 14px;
+    width: 25px;
+}
+
+h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 25px 0;
+}

@@ -1,0 +1,575 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a, a:hover, a:active, a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* GENERAL */
+@font-face {
+  font-family: "Roboto";
+  src: url("../font/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Shrikhand";
+  src: url("../font/shrikhand/Shrikhand-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "Roboto", impact, sans-serif;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.dish-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+/*LOADER */
+.loader {
+  position: fixed;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background: #9356dc;
+  cursor: none;
+  animation: hideMe 0s ease-in 3s forwards;
+}
+.loader__logo {
+  display: block;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 15px;
+  margin: 40vh auto;
+  color: #f5edff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3), inset 1px 1px 7px rgba(255, 255, 255, 0.1);
+  animation: rotate 2s ease-in-out infinite;
+  -webkit-animation: rotate 2s ease-in-out infinite;
+  -o-animation: rotate 2s ease-in-out infinite;
+  -ms-animation: rotate 2s ease-in-out infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes hideMe {
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+/*BOUTON */
+button {
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  min-width: 185px;
+  border-radius: 50px;
+  background: linear-gradient(#FF79DA, #9356dc);
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s;
+  margin: auto;
+}
+
+button:hover {
+  transition: ease-in-out 0.4s;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.3);
+}
+
+/* CHECKBOX COEUR */
+label {
+  position: absolute;
+  top: 197px;
+  right: 22px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.heart_checked {
+  transform: scale(0);
+  background: -webkit-linear-gradient(#9356dc, #FF79DA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fa-heart, input:checked ~ .fa-heart {
+  transition: ease-in-out 0.3s;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox]:checked ~ .heart_checked {
+  transform: scale(1);
+}
+input[type=checkbox]:checked ~ .far.fa-heart {
+  opacity: 0;
+}
+
+.fa-heart, input {
+  cursor: pointer;
+  position: absolute;
+  right: 24px;
+}
+
+/*GEOLOCALISATION */
+.map {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  background: #eaeaea;
+  color: #353535;
+}
+.map * {
+  align-self: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.map i {
+  position: absolute;
+  left: 100px;
+}
+
+/* PRESENTATION */
+.first_part {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #f6f6f6;
+}
+
+.presentation {
+  width: 100%;
+  max-width: 700px;
+  height: 288px;
+  margin: auto;
+}
+.presentation * {
+  text-align: center;
+}
+.presentation h2 {
+  width: 238px;
+  margin: auto;
+  padding: 40px 0 20px 0;
+}
+.presentation h3 {
+  font-weight: normal;
+  color: gray;
+  width: 300px;
+  margin: auto auto 30px auto;
+}
+
+/* FONCTIONNEMENT */
+.operation {
+  width: 100%;
+  max-width: 700px;
+  padding: 40px;
+  margin: auto;
+  background: white;
+}
+.operation__items {
+  position: relative;
+  height: 74px;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  background: #eaeaea;
+  margin: 25px 0;
+  line-height: 74px;
+}
+.operation span {
+  position: absolute;
+  top: 25px;
+  left: -12px;
+  display: flex;
+  font-size: 11px;
+  justify-content: center;
+  align-items: center;
+  background: #9356dc;
+  border-radius: 50px;
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+.operation h4 {
+  display: flex;
+  justify-content: center;
+}
+.operation i {
+  position: absolute;
+  line-height: 74px;
+  left: 35px;
+  color: gray;
+}
+.operation__items:last-child {
+  background: #f5edff;
+}
+.operation__items:last-child i {
+  color: #9356dc;
+}
+
+/* RESTAURANTS*/
+.restaurants {
+  background: #eaeaea;
+  padding-bottom: 25px;
+}
+.restaurants__content h2 {
+  padding: 40px 10px 20px 5%;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  border-radius: 20px;
+  background: white;
+  margin-bottom: 20px;
+}
+.card img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+strong {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  background: #99e2D0;
+  color: #008766;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.card_description {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.card_description__title {
+  position: relative;
+  padding: 15px;
+}
+.card_description__title p {
+  padding-top: 10px;
+}
+
+/*HEADER*/
+header {
+  background: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  position: relative;
+  z-index: 10;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+}
+header img {
+  height: 23px;
+  margin: auto;
+}
+
+.title {
+  font-size: 25px;
+}
+
+/*FOOTER*/
+footer {
+  height: 200px;
+  background: #353535;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+.footer * {
+  color: white;
+}
+.footer a {
+  padding-bottom: 14px;
+  color: white;
+}
+
+.icon_footer {
+  font-size: 14px;
+  width: 25px;
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 25px 0;
+}
+
+.fa-arrow-left {
+  position: absolute;
+  font-size: 17px;
+  color: #353535;
+  left: 25px;
+  top: 25px;
+}
+
+.restaurant_background {
+  position: relative;
+  z-index: -1;
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+  position: relative;
+  margin-top: -40px;
+  padding-bottom: 40px;
+  border-radius: 30px 30px 0 0;
+}
+.menu__header {
+  width: 90%;
+  margin: auto;
+}
+.menu h1 {
+  font-size: 28px;
+  padding-top: 35px;
+}
+.menu h4 {
+  font-weight: lighter;
+  width: 40px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: #99e2D0 3px solid;
+}
+
+.appetizer, .main-course, .sweets {
+  width: 90%;
+  margin: auto;
+  max-width: 400px;
+}
+
+.fav_diner {
+  top: -160px;
+  right: 10px;
+}
+
+.dish-card {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  height: 70px;
+  width: 100%;
+  max-width: 400px;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 13px;
+}
+
+.dish-text {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  padding: 15px;
+  width: 337.5px;
+  flex-shrink: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dish-text h2 {
+  font-size: 17px;
+  padding: 5px 0;
+  white-space: pre-wrap;
+}
+.dish-text p {
+  font-size: 14px;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dish-text em {
+  font-style: normal;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dish-card-description {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 315px;
+}
+
+.dish-under {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dish-check {
+  display: flex;
+  box-sizing: content-box;
+  border-radius: 0 20px 20px 0;
+  width: 0;
+  justify-content: center;
+  align-items: center;
+  transition: linear 0.2s;
+}
+
+.fa-check {
+  visibility: hidden;
+  font-size: 13px;
+  background-color: #f6f6f6;
+  border-radius: 50px;
+  padding: 4px;
+  color: #99e2D0;
+}
+
+.placeorder {
+  display: flex;
+  justify-content: center;
+  padding: 36px 0;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.appear div:nth-of-type(1) {
+  animation: appear 1.4s cubic-bezier(0, 0.54, 0.74, 0.92);
+}
+.appear div:nth-of-type(2) {
+  animation: appear 1.7s cubic-bezier(0, 0.54, 0.74, 0.92);
+}
+.appear div:nth-of-type(3) {
+  animation: appear 2s cubic-bezier(0, 0.54, 0.74, 0.92);
+}
+.appear div:nth-of-type(4) {
+  animation: appear 2.3s cubic-bezier(0, 0.54, 0.74, 0.92);
+}
+
+.dish-card:hover .dish-check {
+  width: 70px;
+  transform: scale(1);
+  background-color: #99e2D0;
+  transition: linear 0.2s;
+}
+.dish-card:hover .dish-check .fa-check {
+  animation: visibility 0.5s forwards 0.2s;
+}
+@keyframes visibility {
+  from {
+    transform: rotate(-180deg);
+  }
+  to {
+    visibility: visible;
+    transform: rotate(0);
+  }
+}
+
+/*FOR TABLETTE */
+
+/*# sourceMappingURL=style.css.map */
