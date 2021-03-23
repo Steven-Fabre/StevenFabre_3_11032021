@@ -1,9 +1,18 @@
+// Reset du style
 @import 'reset';
+// Style généraux
 @import 'base';
+// Configuration du loader
 @import 'loader';
+//Centralisation des mixins
 @import 'mixins';
+// Style des boutons et checkbox
 @import 'buttons';
+// Page index
 @import 'index';
+// Header et Footer
 @import 'header_footer';
+// Style des restaurants
 @import 'diner';
+// Pour tablette et téléphone
 @import 'responsive';
