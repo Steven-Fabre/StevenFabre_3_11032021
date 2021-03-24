@@ -95,7 +95,7 @@
         color: gray;
     }
 
-    &__items:last-child{
+    &__items:hover{
         background: $fifth-background;
         i {
             color: $primary-background;

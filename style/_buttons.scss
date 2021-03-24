@@ -35,18 +35,18 @@ label{
     -webkit-text-fill-color: transparent;
   }
 
-.fa-heart, input:checked~.fa-heart{
+.fa-heart, input:hover~.fa-heart{
     transition: ease-in-out 0.3s;
 }
 
 input[type="checkbox"]{
     display: none;
     
-    &:checked~ .heart_checked{
+    &:hover~ .heart_checked{
         transform: scale(1);
     }
 
-    &:checked~ .far.fa-heart{
+    &:hover~ .far.fa-heart{
         opacity: 0; 
     }
 }
@@ -57,3 +57,4 @@ input[type="checkbox"]{
     position: absolute;
     right: 24px;
 }
+
