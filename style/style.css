@@ -434,7 +434,9 @@ h1 {
   border-bottom: #99e2D0 3px solid;
 }
 
-.appetizer, .main-course, .sweets {
+.appetizer,
+.main-course,
+.sweets {
   width: 90%;
   margin: auto;
   max-width: 400px;
@@ -470,9 +472,10 @@ h1 {
   white-space: nowrap;
 }
 .dish-text h2 {
+  width: 100%;
+  max-width: 315px;
   font-size: 17px;
   padding: 5px 0;
-  white-space: pre-wrap;
 }
 .dish-text p {
   font-size: 14px;
@@ -488,19 +491,17 @@ h1 {
 }
 
 .dish-card-description {
-  display: flex;
+  display: inline-block;
   align-items: center;
-  width: 100%;
-  max-width: 315px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dish-under {
   display: flex;
   justify-content: space-between;
   height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .dish-check {
